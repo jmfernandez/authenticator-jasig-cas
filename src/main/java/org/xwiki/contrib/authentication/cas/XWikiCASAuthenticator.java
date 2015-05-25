@@ -28,7 +28,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.jasig.cas.client.validation.Assertion;
-import org.jasig.cas.client.validation.Cas20ServiceTicketValidator;
+import org.jasig.cas.client.validation.Cas20ProxyTicketValidator;
 import org.jasig.cas.client.validation.Saml11TicketValidator;
 import org.jasig.cas.client.validation.TicketValidationException;
 import org.jasig.cas.client.validation.TicketValidator;
@@ -209,7 +209,9 @@ public class XWikiCASAuthenticator extends XWikiAuthServiceImpl
             if (config.isSAML11Protocol(context)) {
                 validator = new Saml11TicketValidator(casServer);
             } else {
-                validator = new Cas20ServiceTicketValidator(casServer);
+                Cas20ProxyTicketValidator proxyValidator = new Cas20ProxyTicketValidator(casServer);
+                proxyValidator.setAcceptAnyProxy(true);
+                validator = proxyValidator;
             }
 
             // service url creation
