@@ -28,10 +28,10 @@
 		<version>4.4.1</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.xwiki.contrib.authentication</groupId>
+	<groupId>org.xwiki.contrib.authentication.voidengineer</groupId>
 	<artifactId>authenticator-jasig-cas</artifactId>
 	<name>Authenticator Jasig CAS</name>
-	<version>1.1-SNAPSHOT</version>
+	<version>1.1</version>
 	<packaging>jar</packaging>
 	<description>XWiki authenticator based on Jasig CAS</description>
 	<properties>
