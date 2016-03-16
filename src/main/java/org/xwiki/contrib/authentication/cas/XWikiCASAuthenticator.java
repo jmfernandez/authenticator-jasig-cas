@@ -207,7 +207,9 @@ public class XWikiCASAuthenticator extends XWikiAuthServiceImpl
             // create CAS validator
             TicketValidator validator = null;
             if (config.isSAML11Protocol(context)) {
-                validator = new Saml11TicketValidator(casServer);
+                Saml11TicketValidator tmp = new Saml11TicketValidator(casServer);
+                tmp.setTolerance(15000L);
+                validator = tmp;
             } else {
                 validator = new Cas20ServiceTicketValidator(casServer);
             }
