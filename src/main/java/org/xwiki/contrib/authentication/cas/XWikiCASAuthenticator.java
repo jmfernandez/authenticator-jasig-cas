@@ -29,7 +29,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jasig.cas.client.validation.Assertion;
 import org.jasig.cas.client.validation.Cas20ProxyTicketValidator;
-import org.jasig.cas.client.validation.Saml11TicketValidator;
+import org.jasig.cas.client.validation.Cas30ProxyTicketValidator;
 import org.jasig.cas.client.validation.TicketValidationException;
 import org.jasig.cas.client.validation.TicketValidator;
 import org.securityfilter.filter.SecurityRequestWrapper;
@@ -54,7 +54,7 @@ import com.xpn.xwiki.web.XWikiRequest;
  * Some parameters can be used to customized its behavior in xwiki.cfg:
  * <ul>
  * <li>xwiki.authentication.cas.server: CAS server url (i.e. https://localhost:8443/cas)</li>
- * <li>xwiki.authentication.cas.protocol: used protocol CAS20 or SAML11</li>
+ * <li>xwiki.authentication.cas.protocol: used protocol CAS20 or CAS30</li>
  * <li>xwiki.authentication.cas.access_denied_page: user not authorized page (i.e.
  * /bin/view/XWiki/XWikiCASAccessDenied). If not set a HTTP status 401 is returned.</li>
  * <li>xwiki.authentication.cas.create_user: 0 or 1 if create XWiki user after log in</li>
@@ -206,10 +206,10 @@ public class XWikiCASAuthenticator extends XWikiAuthServiceImpl
         try {
             // create CAS validator
             TicketValidator validator = null;
-            if (config.isSAML11Protocol(context)) {
-                Saml11TicketValidator tmp = new Saml11TicketValidator(casServer);
-                tmp.setTolerance(15000L);
-                validator = tmp;
+            if (config.isCAS30Protocol(context)) {
+                Cas30ProxyTicketValidator proxyValidator = new Cas30ProxyTicketValidator(casServer);
+                proxyValidator.setAcceptAnyProxy(true);
+                validator = proxyValidator;
             } else {
                 Cas20ProxyTicketValidator proxyValidator = new Cas20ProxyTicketValidator(casServer);
                 proxyValidator.setAcceptAnyProxy(true);

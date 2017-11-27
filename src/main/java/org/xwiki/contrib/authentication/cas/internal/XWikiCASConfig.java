@@ -64,7 +64,7 @@ public final class XWikiCASConfig
 
     public static final String PROTOCOL_CAS20 = "CAS20";
 
-    public static final String PROTOCOL_SAML11 = "SAML11";
+    public static final String PROTOCOL_CAS30 = "CAS30";
 
     /**
      * Logging tool.
@@ -179,9 +179,9 @@ public final class XWikiCASConfig
         return PROTOCOL_CAS20.equalsIgnoreCase(getCASProtocol(context));
     }
 
-    public boolean isSAML11Protocol(XWikiContext context)
+    public boolean isCAS30Protocol(XWikiContext context)
     {
-        return PROTOCOL_SAML11.equalsIgnoreCase(getCASProtocol(context));
+        return PROTOCOL_CAS30.equalsIgnoreCase(getCASProtocol(context));
     }
 
     /**

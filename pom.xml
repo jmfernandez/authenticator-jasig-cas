@@ -31,7 +31,7 @@
 	<groupId>org.xwiki.contrib.authentication.voidengineer</groupId>
 	<artifactId>authenticator-jasig-cas</artifactId>
 	<name>Authenticator Jasig CAS</name>
-	<version>1.1</version>
+	<version>1.2</version>
 	<packaging>jar</packaging>
 	<description>XWiki authenticator based on Jasig CAS</description>
 	<properties>
@@ -53,7 +53,7 @@
 		<dependency>
 			<groupId>org.jasig.cas.client</groupId>
 			<artifactId>cas-client-core</artifactId>
-			<version>3.2.1</version>
+			<version>3.4.1</version>
 			<type>jar</type>
 			<exclusions>
 				<exclusion>
