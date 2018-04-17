@@ -37,6 +37,9 @@ Authenticate user on main wiki based on Jasig CAS server. It creates XWiki users
 ```bash
 mvn clean package
 ```
+  
+  Once it has finished properly, the jar file should be at `target/authenticator-jasig-cas-1.2.jar`. Additional jar files could be needed, available at `${HOME}/.m2/repository/org/jasig/cas/client/cas-client-core`.
+  
 * Setup xwiki.cfg
 
 # TODO
